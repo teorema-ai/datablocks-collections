@@ -20,7 +20,6 @@ import pandas as pd
 import plotly.express as px
 import pyarrow.parquet as pq
 from sklearn.cluster import KMeans
-import umap
 
 from .micron_cclustering import ZSConsensusClustering
 
@@ -33,6 +32,7 @@ class Datablock:
 
     @staticmethod
     def display_umap(frame, *, color=None):
+        import umap # late import to avoid unnecessary jit calls
         _umap = umap.UMAP()
         _udata = _umap.fit_transform(frame.fillna(0.0))
         plt.scatter(_udata[:, 0], _udata[:, 1], c=color)
