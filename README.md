@@ -2,22 +2,27 @@
 ## BASH
 * datablocks
 ```
+#> Setup
+pip install -e $DATABLOCKS
+pip install -e $DATABLOCKS_COLLECTION
+
 #> Define
 export DATALAKE=$HOME/.cache/testlake
-rm -rf $DATELAKE
-export MIRCOHN="datablocks.DBX('datablocks_collections.micron.micron_datablocks.miRCoHN', verbose=True)"
-export MIRCOSTATS="datablocks.DBX('datablocks_collections.micron.micron_datablocks.miRCoStats').SCOPE(mirco=$MIRCOHN.READ('counts'))"
+rm -rf $DATELAKE # optional, to ensure a clean test
+export MIRLOGCOHN="datablocks.DBX('datablocks_collections.micron.micron_datablocks.miRLogCoHN', 'miRLogCoHN', verbose=True)"
+export MIRCOHN="datablocks.DBX('datablocks_collections.micron.micron_datablocks.miRCoHN', 'miRCoHN', verbose=True).SCOPE(logcounts=$MIRLOGCOHN.READ())"
 
 #> Examine
-echo "$MIRCOHN"
+echo "$MIRLOGCOHN"
+dbx "$MIRLOGCOHN"
+dbx "$MIRLOGCOHN.scope"
+python -c "from datablocks_collections.micron.micron_datablocks import miRLogCoHN; help(miRLogCoHN)"
+python -c "from datablocks_collections.micron.micron_datablocks import miRLogCoHN; help(miRLogCoHN.SCOPE)"
+
 dbx "$MIRCOHN"
 dbx "$MIRCOHN.scope"
-dbx "help(datablocks_collections.micron.micron_datablocks.miRCoHN)"
-dbx "help(datablocks_collections.micron.micron_datablocks.miRCoHN.SCOPE)"
-
-dbx "$MIRCOSTATS.SCOPE"
-dbx "$MIRCOSTATS.intent()"
-dbx "$MIRCOSTATS.extent()"
+dbx "$MIRCOHN.intent()"
+dbx "$MIRCOHN.extent()"
 
 #> Build
 #... Start with miRCoHN: upstream dependency

@@ -22,7 +22,7 @@ import pyarrow.parquet as pq
 from sklearn.cluster import KMeans
 import umap
 
-from micron.cclustering import ZSConsensusClustering
+from .micron_cclustering import ZSConsensusClustering
 
 
 class Datablock:
@@ -115,6 +115,10 @@ class miRLogCoHN(Datablock):
     """
     REVISION = "0.1.1"
     FILENAME = "mircohn_rpm_log2.parquet"
+
+    @dataclass
+    class SCOPE:
+        pass
 
     _SRC_URL = "https://gdac.broadinstitute.org/runs/stddata__2016_01_28/data/HNSC/20160128/"
     _SRC_TAR_DIRNAME = "gdac.broadinstitute.org_HNSC.miRseq_Mature_Preprocess.Level_3.2016012800.0.0"
