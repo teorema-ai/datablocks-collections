@@ -18,7 +18,8 @@ export MIRLOGCOHN="datablocks.DBX('datablocks_collections.micron.micron_databloc
                                   'miRLogCoHN', \
                                   repo='$DATABLOCKS_COLLECTIONS',\
                                   revision='$REVISION',\
-                                  verbose=True)"
+                                  verbose=True)\
+                        .Databuilder(pool=STDOUT_POOL)"
 export MIRCOHN="datablocks.DBX('datablocks_collections.micron.micron_datablocks.miRCoHN', 'miRCoHN', \
                                 verbose=True).SCOPE(logcounts=$MIRLOGCOHN.READ())"
 
