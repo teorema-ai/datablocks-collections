@@ -12,8 +12,13 @@ dbx "DBX.show_datablocks()"
 
 #> Define DBXs
 rm -rf $DATELAKE # optional, to ensure a clean test
-export MIRLOGCOHN="datablocks.DBX('datablocks_collections.micron.micron_datablocks.miRLogCoHN', 'miRLogCoHN', verbose=True)"
-export MIRCOHN="datablocks.DBX('datablocks_collections.micron.micron_datablocks.miRCoHN', 'miRCoHN', verbose=True).SCOPE(logcounts=$MIRLOGCOHN.READ())"
+export MIRLOGCOHN="datablocks.DBX('datablocks_collections.micron.micron_datablocks.miRLogCoHN', \
+                                  'miRLogCoHN', \
+                                  repo='$DATABLOCKS_COLLECTIONS',\
+                                  revision='90c94374253985766c10e3ce0b60550e317622d1',\
+                                  verbose=True)"
+export MIRCOHN="datablocks.DBX('datablocks_collections.micron.micron_datablocks.miRCoHN', 'miRCoHN', \
+                                verbose=True).SCOPE(logcounts=$MIRLOGCOHN.READ())"
 
 #> Examine
 echo "$MIRLOGCOHN"
