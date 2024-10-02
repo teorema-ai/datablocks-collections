@@ -19,9 +19,16 @@ export MIRLOGCOHN="datablocks.DBX('datablocks_collections.micron.micron_databloc
                                   repo='$DATABLOCKS_COLLECTIONS',\
                                   revision='$REVISION',\
                                   verbose=True)\
+<<<<<<< Updated upstream
                         .Databuilder(pool=STDOUT_POOL)"
+=======
+                    .Databuilder(pool=FILE_POOL)"
+>>>>>>> Stashed changes
 export MIRCOHN="datablocks.DBX('datablocks_collections.micron.micron_datablocks.miRCoHN', 'miRCoHN', \
                                 verbose=True).SCOPE(logcounts=$MIRLOGCOHN.READ())"
+# validate
+dbx "$MIRLOGCOHN"
+dbx "$MIRCOHN"
 
 #> Examine
 echo "$MIRLOGCOHN"
