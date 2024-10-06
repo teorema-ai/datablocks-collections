@@ -5,8 +5,9 @@
 #> Setup
 pip install -e $DATABLOCKS
 pip install -e $DATABLOCKS_COLLECTION
+ray start --head --dashboard-host=0.0.0.0
 
-#> Env & Survey
+#> Lay of the land
 export DATALAKE=$HOME/.cache/testlake
 dbx "DBX.show_datablocks()"
 cd $DATABLOCKS_COLLECTIONS
