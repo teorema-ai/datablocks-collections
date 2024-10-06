@@ -6,6 +6,8 @@
 pip install -e $DATABLOCKS
 pip install -e $DATABLOCKS_COLLECTION
 ray start --head --dashboard-host=0.0.0.0
+# worker logs
+ls /tmp/ray/session_latest/logs
 
 #> Lay of the land
 export DATALAKE=$HOME/.cache/testlake
